@@ -7,7 +7,7 @@ import GhostButton from '../GhostButton';
 import Socket from 'socket.io-client'
 
 // Socket.io socket to communicate with backend
-const socket = Socket();
+const socket = Socket("/");
 
 export default class WatsonModal extends Component {
   constructor(props) {

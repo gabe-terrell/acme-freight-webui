@@ -37,7 +37,7 @@ app.use(convert(historyApiFallback({
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
-if (config.env === 'development' || true) {
+if (config.env === 'development') {
   const compiler = webpack(webpackConfig);
 
   // Enable webpack-dev and webpack-hot middleware
@@ -68,12 +68,12 @@ else {
 }
 
 var server = require('http').Server(app.callback()),
-    io = require('socket.io')(server, { origins: '*:*'});
+    io = require('socket.io')(server);
 
 // Watson Services
 const conversation = new ConversationV1({
-  username: "6464f84a-dbab-4231-a844-ce8b829d5c6c", // replace with username from service key
-  password: "pOWBoJMzvvcW", // replace with password from service key
+  username: "fcb6b64c-6f07-4c6c-8172-96360fe0d0e7", // replace with username from service key
+  password: "mbGKnzjyBMpl", // replace with password from service key
   path: { workspace_id: '6ae7c6a0-dbd6-4f76-8bdb-b72841187cd3' }, // replace with workspace ID
   version_date: '2016-07-11'
 });
