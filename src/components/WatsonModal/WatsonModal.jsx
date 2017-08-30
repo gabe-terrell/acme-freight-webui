@@ -18,16 +18,29 @@ export default class WatsonModal extends Component {
     this.state = {
       open: false,
       query: "",
-      response: ""
+      response: "",
+      opener: ""
     };
   }
 
+  componentDidMount() {
+    const introMessage = "D4SHB04RD-1NTR0DUCT10N-M3SS4G3";
+    this.askWatson(introMessage);
+  }
+
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({
+      open: true,
+      response: this.state.opener
+    });
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({
+      open: false,
+      query: "",
+      response: ""
+    });
   };
 
   handleQueryChange(event) {
@@ -54,7 +67,8 @@ export default class WatsonModal extends Component {
     socket.on('resWatson', (response) => {
       this.setState({
         response: response,
-        query: ""
+        query: "",
+        opener: this.state.opener || response
       });
     })
   }
