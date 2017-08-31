@@ -5,10 +5,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import GhostButton from '../GhostButton';
 import Socket from 'socket.io-client'
+import ip from 'ip';
 
 // Socket.io socket to communicate with backend
+const localip = ip.address();
 const port = process.env.PORT || 3000
-const addr = `http://localhost:${port}`
+const addr = `http://${localip}:${port}`
 console.log(addr)
 const socket = Socket(addr);
 
