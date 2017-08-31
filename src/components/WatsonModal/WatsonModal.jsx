@@ -12,7 +12,8 @@ const localip = ip.address();
 const port = process.env.PORT || 3000
 const addr = `http://${localip}:${port}`
 console.log(addr)
-console.log(process.env.TRACKING_ID)
+console.log(process.env.NODE_ENV || "no env")
+console.log(process.env.TRACKING_ID || "no id")
 const socket = Socket(addr);
 
 export default class WatsonModal extends Component {
